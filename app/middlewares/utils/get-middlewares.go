@@ -1,13 +1,14 @@
 package middlewareutils
 
 import (
+	commonMiddlewares "github.com/Tsuryu/arreglapp-commons/app/middlewares"
 	"github.com/Tsuryu/arreglapp-core-operations/app/middlewares"
 	"github.com/gin-gonic/gin"
 )
 
 var middlewarelist = map[string][]gin.HandlerFunc{
 	"health": {
-		middlewares.Healthcheck,
+		commonMiddlewares.Healthcheck,
 	},
 	"postOperationType": {
 		middlewares.PostOperationtype,

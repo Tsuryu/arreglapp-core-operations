@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/Tsuryu/arreglapp-commons/app/utils"
 	"github.com/Tsuryu/arreglapp-core-operations/app/models"
-	"github.com/Tsuryu/arreglapp-transactions/app/utils"
 )
 
 // Insert : Creates new transaction

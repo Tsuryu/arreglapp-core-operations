@@ -1,6 +1,6 @@
 package operationtypes
 
-import "github.com/Tsuryu/arreglapp-core-operations/app/db"
+import "github.com/Tsuryu/arreglapp-commons/app/db"
 
 var database = db.Connection.Database("arreglapp")
 

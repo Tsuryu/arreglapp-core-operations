@@ -1,6 +1,6 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/Tsuryu/arreglapp-transactions v0.0.0-20201016021412-6618d194bf3b h1:0KoNfk2qFqaI2x6zq477Bpqa4tnmfGnsEXsPF/6Vl20=
-github.com/Tsuryu/arreglapp-transactions v0.0.0-20201016021412-6618d194bf3b/go.mod h1:+FtN/GOgHYAlQQZo3AehUquZA9A0tVWtNGJMvlcv6nM=
+github.com/Tsuryu/arreglapp-commons v0.0.1 h1:6IKhCTv2d5o0UUfW+5hNRt25C0EIfedVXSuSoueyvfo=
+github.com/Tsuryu/arreglapp-commons v0.0.1/go.mod h1:n/FnfwTNaKxhYPIE0D2+nViEFUOizMZzVL6WwQpciDc=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
