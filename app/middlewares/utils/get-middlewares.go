@@ -16,6 +16,13 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 	"getOperationTypes": {
 		middlewares.GetActive,
 	},
+	"postServiceRequest": {
+		middlewares.PostServiceRequest,
+	},
+	// listServiceRequest
+	"listServiceRequest": {
+		middlewares.ListServiceRequest,
+	},
 }
 
 // GetMiddlewares : get array of middlewares by name

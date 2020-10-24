@@ -15,6 +15,8 @@ func Router() {
 	router.GET("/health", middlewareutils.GetMiddlewares("health")...)
 	router.POST("/operation-type", middlewareutils.GetMiddlewares("postOperationType")...)
 	router.GET("/operation-type", middlewareutils.GetMiddlewares("getOperationTypes")...)
+	router.POST("/service-request", middlewareutils.GetMiddlewares("postServiceRequest")...)
+	router.GET("/service-request/list", middlewareutils.GetMiddlewares("listServiceRequest")...)
 
 	router.Run(":" + os.Getenv("APP_PORT"))
 }

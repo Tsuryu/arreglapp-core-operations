@@ -2,6 +2,6 @@ package models
 
 // Location : gps location
 type Location struct {
-	longitud float64
-	latitud  float64
+	Longitude float32
+	Latitude  float32
 }
