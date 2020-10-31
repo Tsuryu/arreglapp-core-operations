@@ -21,6 +21,7 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 	},
 	// listServiceRequest
 	"listServiceRequest": {
+		middlewares.GetIcons,
 		middlewares.ListServiceRequest,
 	},
 }

@@ -17,6 +17,7 @@ func PostServiceRequest(context *gin.Context) {
 
 	transaction := commonModels.Transaction{}
 	transactionDetail := commonModels.TransactionDetail{}
+	transactionDetail.Status = "created"
 
 	transactionDetail.Metadata = serviceRequest
 	transaction.Reference = "service-request"
