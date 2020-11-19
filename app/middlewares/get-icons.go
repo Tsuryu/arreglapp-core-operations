@@ -14,7 +14,6 @@ func GetIcons(context *gin.Context) {
 		log.Println(err)
 		return
 	}
-	keys := make(map[string]interface{})
-	keys["operation_types"] = result
-	context.Keys = keys
+
+	context.Keys["operation_types"] = result
 }

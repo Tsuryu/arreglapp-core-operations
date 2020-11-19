@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"fmt"
 	"net/http"
 
 	commonModels "github.com/Tsuryu/arreglapp-commons/app/models"
@@ -12,8 +13,15 @@ import (
 
 // PostServiceRequest : init service request ransaction
 func PostServiceRequest(context *gin.Context) {
+	claim := context.Keys["claims"].(*commonModels.Claim)
+	fmt.Println(claim)
 	serviceRequest := models.ServiceRequest{}
 	context.ShouldBindBodyWith(&serviceRequest, binding.JSON)
+	serviceRequest.UserContactInfo = models.UserContactInfo{
+		Firstname: claim.FirstName,
+		Lastname:  claim.LastName,
+		Phone:     claim.Phone,
+	}
 
 	transaction := commonModels.Transaction{}
 	transactionDetail := commonModels.TransactionDetail{}

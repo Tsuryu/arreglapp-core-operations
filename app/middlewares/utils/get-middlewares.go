@@ -19,10 +19,29 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 	"postServiceRequest": {
 		middlewares.PostServiceRequest,
 	},
-	// listServiceRequest
 	"listServiceRequest": {
 		middlewares.GetIcons,
 		middlewares.ListServiceRequest,
+		middlewares.MarshallServiceRequest,
+	},
+	"searchServiceRequest": {
+		middlewares.GetIcons,
+		middlewares.SearchServiceRequest,
+		middlewares.FilterMyServiceRequest,
+		middlewares.FilterOngoingServiceRequest,
+		middlewares.MarshallServiceRequest,
+	},
+	"initChatServiceRequest": {
+		middlewares.InitChat,
+	},
+	"professionalListServiceRequest": {
+		middlewares.GetIcons,
+		middlewares.SearchServiceRequest,
+		middlewares.FilterMyServiceRequest,
+		middlewares.MarshallProfessionalServiceRequest,
+	},
+	"confirmProfessional": {
+		middlewares.ConfirmProfessional,
 	},
 }
 

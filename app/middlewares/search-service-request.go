@@ -8,10 +8,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// ListServiceRequest : get services by username
-func ListServiceRequest(context *gin.Context) {
-	username := context.Query("username") // shortcut for c.Request.URL.Query().Get("username")
-	transactions, err := service.GetTransactions(commonModels.Transaction{Username: username})
+// SearchServiceRequest : fetch request beeing a provider
+func SearchServiceRequest(context *gin.Context) {
+	transactions, err := service.GetTransactions(commonModels.Transaction{Reference: "service-request"})
 
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"message": "Failed to get services requests"})

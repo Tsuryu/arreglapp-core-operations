@@ -17,7 +17,11 @@ func Router() {
 	router.POST("/operation-type", middlewareutils.GetMiddlewares("postOperationType")...)
 	router.GET("/operation-type", middlewareutils.GetMiddlewares("getOperationTypes")...)
 	router.POST("/service-request", middlewareutils.GetMiddlewares("postServiceRequest")...)
+	router.POST("/service-request/init-chat", middlewareutils.GetMiddlewares("initChatServiceRequest")...)
 	router.GET("/service-request/list", middlewareutils.GetMiddlewares("listServiceRequest")...)
+	router.GET("/service-request/search", middlewareutils.GetMiddlewares("searchServiceRequest")...)
+	router.GET("/service-request/professional/list", middlewareutils.GetMiddlewares("professionalListServiceRequest")...)
+	router.POST("service-request/professional/:id/confirm", middlewareutils.GetMiddlewares("confirmProfessional")...)
 
 	port, err := strconv.Atoi(os.Getenv("APP_PORT"))
 	if err == nil {
