@@ -43,6 +43,9 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 	"confirmProfessional": {
 		middlewares.ConfirmProfessional,
 	},
+	"postBudget": {
+		middlewares.PostBudget,
+	},
 }
 
 // GetMiddlewares : get array of middlewares by name

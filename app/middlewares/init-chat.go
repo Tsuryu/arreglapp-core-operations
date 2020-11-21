@@ -11,7 +11,6 @@ import (
 // InitChat : initialize chat with the client
 func InitChat(context *gin.Context) {
 	transactionDetail := models.TransactionDetail{}
-	// context.ShouldBindBodyWith(&transactionDetail, binding.JSON)
 	claim := context.Keys["claims"].(*models.Claim)
 
 	traceID := context.GetHeader("trace-id")

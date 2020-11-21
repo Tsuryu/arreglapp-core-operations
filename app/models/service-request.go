@@ -14,4 +14,5 @@ type ServiceRequest struct {
 	OperationType   OperationType      `json:"operation_type,omitempty"`
 	UserContactInfo UserContactInfo    `json:"user_contact_info,omitempty"`
 	Chats           []UserContactInfo  `json:"chats,omitempty"`
+	Budget          *Budget            `json:"budget,omitempty"`
 }

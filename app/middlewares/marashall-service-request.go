@@ -36,6 +36,7 @@ func MarshallServiceRequest(context *gin.Context) {
 		// }
 
 		metadata := transaction.Details[0].Metadata.(map[string]interface{})
+		budget := models.Budget{}
 		location := models.Location{}
 		locationJSONString, _ := json.Marshal(metadata["location"])
 		json.Unmarshal(locationJSONString, &location)
@@ -68,13 +69,17 @@ func MarshallServiceRequest(context *gin.Context) {
 
 				chats = append(chats, chat)
 			}
+			if detail.Status == "budget" {
+				jsonString, _ := json.Marshal(detail.Metadata)
+				json.Unmarshal(jsonString, &budget)
+			}
 		}
 
 		userContactInfo := models.UserContactInfo{}
 		userContactInfoJSONString, _ := json.Marshal(metadata["user_contact_info"])
 		json.Unmarshal(userContactInfoJSONString, &userContactInfo)
 
-		serviceRequestList = append(serviceRequestList, models.ServiceRequest{
+		serviceRequest := models.ServiceRequest{
 			ID:              transaction.TraceID,
 			Username:        transaction.Username,
 			Type:            metadata["type"].(string),
@@ -84,7 +89,13 @@ func MarshallServiceRequest(context *gin.Context) {
 			Location:        location,
 			OperationType:   operationType,
 			Chats:           chats,
-		})
+		}
+
+		if budget.Username != "" {
+			serviceRequest.Budget = &budget
+		}
+
+		serviceRequestList = append(serviceRequestList, serviceRequest)
 	}
 
 	context.JSON(http.StatusOK, serviceRequestList)

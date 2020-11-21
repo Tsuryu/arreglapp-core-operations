@@ -22,6 +22,7 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 			continue
 		}
 
+		budget := models.Budget{}
 		shouldContinue = true
 		confirmed = false
 
@@ -32,6 +33,11 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 			}
 			if detail.Status == "chosen-professional" && detailMetadata["Username"] == claim.Username {
 				confirmed = true
+			}
+
+			if detail.Status == "budget" {
+				jsonString, _ := json.Marshal(detailMetadata)
+				json.Unmarshal(jsonString, &budget)
 			}
 		}
 
@@ -57,7 +63,7 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 		json.Unmarshal(userContactInfoJSONString, &userContactInfo)
 		userContactInfo.Confirmed = confirmed
 
-		serviceRequestList = append(serviceRequestList, models.ServiceRequest{
+		serviceRequest := models.ServiceRequest{
 			ID:              transaction.TraceID,
 			Username:        transaction.Username,
 			Type:            metadata["type"].(string),
@@ -66,7 +72,13 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 			UserContactInfo: userContactInfo,
 			Location:        location,
 			OperationType:   operationType,
-		})
+		}
+
+		if budget.Username != "" {
+			serviceRequest.Budget = &budget
+		}
+
+		serviceRequestList = append(serviceRequestList, serviceRequest)
 	}
 
 	context.JSON(http.StatusOK, serviceRequestList)
