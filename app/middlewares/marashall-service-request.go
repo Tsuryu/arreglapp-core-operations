@@ -2,9 +2,9 @@ package middlewares
 
 import (
 	"encoding/json"
-	"net/http"
 
 	commonModels "github.com/Tsuryu/arreglapp-commons/app/models"
+	"github.com/Tsuryu/arreglapp-commons/app/utils"
 	"github.com/Tsuryu/arreglapp-core-operations/app/models"
 	"github.com/gin-gonic/gin"
 )
@@ -98,5 +98,5 @@ func MarshallServiceRequest(context *gin.Context) {
 		serviceRequestList = append(serviceRequestList, serviceRequest)
 	}
 
-	context.JSON(http.StatusOK, serviceRequestList)
+	utils.AddContextKey(context, "response", serviceRequestList)
 }

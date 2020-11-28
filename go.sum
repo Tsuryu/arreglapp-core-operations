@@ -17,6 +17,16 @@ github.com/Tsuryu/arreglapp-commons v0.0.11 h1:tEMJrcJP/cUdVrjfX71+Lm/ZTJI7+P+qN
 github.com/Tsuryu/arreglapp-commons v0.0.11/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
 github.com/Tsuryu/arreglapp-commons v0.0.12 h1:ExMZNbQDehGImoiA0WHCwA+mmCiFO4RGgMI1sF1sJFo=
 github.com/Tsuryu/arreglapp-commons v0.0.12/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
+github.com/Tsuryu/arreglapp-commons v0.0.14 h1:PYo4Sg50kTjhKnjXKOW2uhYtZvpCO6ARMCIElNkFMPk=
+github.com/Tsuryu/arreglapp-commons v0.0.14/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
+github.com/Tsuryu/arreglapp-commons v0.0.18 h1:XgcBM+Pny2ZI1opPoGWw1DkngqMzkUX0kMdyWUtEIng=
+github.com/Tsuryu/arreglapp-commons v0.0.18/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
+github.com/Tsuryu/arreglapp-commons v0.0.19 h1:/gNyje044CFbbz3O6CJnfRgvoIB/vguJQH2wQLmzfbU=
+github.com/Tsuryu/arreglapp-commons v0.0.19/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
+github.com/Tsuryu/arreglapp-commons v0.0.20 h1:OJ8qLOV2cdXGr3sJuB8qwgWu+Nvf6FC9qA4vJ3XSG8w=
+github.com/Tsuryu/arreglapp-commons v0.0.20/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
+github.com/Tsuryu/arreglapp-commons v0.0.21 h1:mSRUuYu76Gr1a0L/giG23qwYsL3EbR5+ifDKlUdb4uQ=
+github.com/Tsuryu/arreglapp-commons v0.0.21/go.mod h1:8icAcCxpgNX2BdlAXLevBjoi3Q4on/s9TVKZXoz9ayM=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

@@ -5,6 +5,7 @@ import (
 
 	"github.com/Tsuryu/arreglapp-commons/app/models"
 	"github.com/Tsuryu/arreglapp-commons/app/service"
+	"github.com/Tsuryu/arreglapp-commons/app/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,6 +13,11 @@ import (
 func InitChat(context *gin.Context) {
 	transactionDetail := models.TransactionDetail{}
 	claim := context.Keys["claims"].(*models.Claim)
+	destinatary := struct {
+		To string `json:"to"`
+	}{}
+
+	context.ShouldBind(&destinatary)
 
 	traceID := context.GetHeader("trace-id")
 	transactionDetail.Status = "new-chat"
@@ -34,4 +40,5 @@ func InitChat(context *gin.Context) {
 	}
 
 	context.JSON(http.StatusCreated, gin.H{})
+	utils.AddContextKey(context, "username", destinatary.To)
 }

@@ -23,28 +23,45 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 		middlewares.GetIcons,
 		middlewares.ListServiceRequest,
 		middlewares.MarshallServiceRequest,
+		middlewares.ResponseOK,
 	},
-	"searchServiceRequest": {
+	"searchServiceRequest": { // search new request
 		middlewares.GetIcons,
 		middlewares.SearchServiceRequest,
 		middlewares.FilterMyServiceRequest,
 		middlewares.FilterOngoingServiceRequest,
 		middlewares.MarshallServiceRequest,
+		middlewares.ResponseOK,
 	},
 	"initChatServiceRequest": {
 		middlewares.InitChat,
+		middlewares.GetTransaction,
+		middlewares.GetIcons,
+		middlewares.MarshallServiceRequest,
+		middlewares.NotifyNewChat,
 	},
-	"professionalListServiceRequest": {
+	"professionalListServiceRequest": { // ongoing
 		middlewares.GetIcons,
 		middlewares.SearchServiceRequest,
 		middlewares.FilterMyServiceRequest,
+		middlewares.FilterNewRequests,
 		middlewares.MarshallProfessionalServiceRequest,
+		middlewares.ResponseOK,
 	},
 	"confirmProfessional": {
 		middlewares.ConfirmProfessional,
+		middlewares.GetIcons,
+		middlewares.GetTransaction,
+		middlewares.MarshallProfessionalServiceRequest,
+		middlewares.NotifyConfirmProfessional,
 	},
 	"postBudget": {
+		middlewares.GetTransaction,
 		middlewares.PostBudget,
+		middlewares.GetTransaction,
+		middlewares.GetIcons,
+		middlewares.MarshallServiceRequest,
+		middlewares.NotifyNewBudget,
 	},
 }
 

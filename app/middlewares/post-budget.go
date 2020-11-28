@@ -5,6 +5,7 @@ import (
 
 	commonModels "github.com/Tsuryu/arreglapp-commons/app/models"
 	"github.com/Tsuryu/arreglapp-commons/app/service"
+	"github.com/Tsuryu/arreglapp-commons/app/utils"
 	"github.com/Tsuryu/arreglapp-core-operations/app/models"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -29,4 +30,7 @@ func PostBudget(context *gin.Context) {
 	}
 
 	context.JSON(http.StatusCreated, gin.H{})
+
+	transactions := context.Keys["transactions"].([]commonModels.Transaction)
+	utils.AddContextKey(context, "username", transactions[0].Username)
 }

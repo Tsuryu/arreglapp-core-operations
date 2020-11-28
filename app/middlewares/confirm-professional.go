@@ -5,6 +5,7 @@ import (
 
 	commonModels "github.com/Tsuryu/arreglapp-commons/app/models"
 	"github.com/Tsuryu/arreglapp-commons/app/service"
+	"github.com/Tsuryu/arreglapp-commons/app/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,6 +15,7 @@ func ConfirmProfessional(context *gin.Context) {
 	username := context.Param("id")
 	traceID := context.GetHeader("trace-id")
 
+	utils.AddContextKey(context, "username", username)
 	transactionDetail.Status = "chosen-professional"
 	transactionDetail.Metadata = struct {
 		Username string
@@ -28,4 +30,8 @@ func ConfirmProfessional(context *gin.Context) {
 	}
 
 	context.JSON(http.StatusCreated, gin.H{})
+
+	utils.AddContextKey(context, "claims", &commonModels.Claim{
+		Username: username,
+	})
 }

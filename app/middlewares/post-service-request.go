@@ -21,6 +21,7 @@ func PostServiceRequest(context *gin.Context) {
 		Firstname: claim.FirstName,
 		Lastname:  claim.LastName,
 		Phone:     claim.Phone,
+		Username:  claim.Username,
 	}
 
 	transaction := commonModels.Transaction{}

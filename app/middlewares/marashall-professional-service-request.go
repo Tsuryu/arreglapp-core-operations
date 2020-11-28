@@ -2,9 +2,9 @@ package middlewares
 
 import (
 	"encoding/json"
-	"net/http"
 
 	commonModels "github.com/Tsuryu/arreglapp-commons/app/models"
+	"github.com/Tsuryu/arreglapp-commons/app/utils"
 	"github.com/Tsuryu/arreglapp-core-operations/app/models"
 	"github.com/gin-gonic/gin"
 )
@@ -14,7 +14,7 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 	operationTypes := context.Keys["operation_types"].([]models.OperationType)
 	transactions := context.Keys["transactions"].([]commonModels.Transaction)
 	claim := context.Keys["claims"].(*commonModels.Claim)
-	var shouldContinue, confirmed bool
+	var confirmed bool
 
 	serviceRequestList := []models.ServiceRequest{}
 	for _, transaction := range transactions {
@@ -23,14 +23,10 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 		}
 
 		budget := models.Budget{}
-		shouldContinue = true
 		confirmed = false
 
 		for _, detail := range transaction.Details {
 			detailMetadata := detail.Metadata.(map[string]interface{})
-			if detailMetadata["Username"] == claim.Username {
-				shouldContinue = false
-			}
 			if detail.Status == "chosen-professional" && detailMetadata["Username"] == claim.Username {
 				confirmed = true
 			}
@@ -39,11 +35,6 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 				jsonString, _ := json.Marshal(detailMetadata)
 				json.Unmarshal(jsonString, &budget)
 			}
-		}
-
-		if shouldContinue {
-			shouldContinue = true
-			continue
 		}
 
 		metadata := transaction.Details[0].Metadata.(map[string]interface{})
@@ -81,5 +72,5 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 		serviceRequestList = append(serviceRequestList, serviceRequest)
 	}
 
-	context.JSON(http.StatusOK, serviceRequestList)
+	utils.AddContextKey(context, "response", serviceRequestList)
 }
