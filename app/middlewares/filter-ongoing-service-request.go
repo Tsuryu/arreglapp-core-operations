@@ -16,6 +16,9 @@ func FilterOngoingServiceRequest(context *gin.Context) {
 		if transaction.Username != claim.Username {
 
 			for _, detail := range transaction.Details {
+				if detail.Metadata == nil {
+					continue
+				}
 				detailMetadata := detail.Metadata.(map[string]interface{})
 				if detail.Status == "new-chat" && detailMetadata["Username"] == claim.Username {
 					shouldContinue = true

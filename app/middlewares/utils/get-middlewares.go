@@ -63,6 +63,21 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 		middlewares.MarshallServiceRequest,
 		middlewares.NotifyNewBudget,
 	},
+	"payServiceRequest": {
+		middlewares.GetTransaction,
+		middlewares.PayServiceRequest,
+		middlewares.GetServiceRequestProviderFromTransaction,
+		middlewares.GetTransaction,
+		middlewares.GetIcons,
+		middlewares.MarshallProfessionalServiceRequest,
+		middlewares.NotifyNewTransactionFee,
+	},
+	"payTransactionFee": {
+		middlewares.PayTransactionFee,
+	},
+	"supportRequest": {
+		middlewares.PostSupportRequest,
+	},
 }
 
 // GetMiddlewares : get array of middlewares by name

@@ -23,6 +23,10 @@ func Router() {
 	router.GET("/service-request/professional/list", middlewareutils.GetMiddlewares("professionalListServiceRequest")...)
 	router.POST("service-request/professional/:id/confirm", middlewareutils.GetMiddlewares("confirmProfessional")...)
 	router.POST("service-request/budget", middlewareutils.GetMiddlewares("postBudget")...)
+	router.POST("/service-request/pay", middlewareutils.GetMiddlewares("payServiceRequest")...)
+	router.POST("/service-request/pay-transaction-fee", middlewareutils.GetMiddlewares("payTransactionFee")...)
+
+	router.POST("/support-request", middlewareutils.GetMiddlewares("supportRequest")...)
 
 	port, err := strconv.Atoi(os.Getenv("APP_PORT"))
 	if err == nil {

@@ -15,6 +15,9 @@ func FilterNewRequests(context *gin.Context) {
 	for _, transaction := range transactions {
 		shouldFilter = true
 		for _, detail := range transaction.Details {
+			if detail.Metadata == nil {
+				continue
+			}
 			detailMetadata := detail.Metadata.(map[string]interface{})
 			if detail.Status == "new-chat" && detailMetadata["Username"] == claim.Username {
 				shouldFilter = false

@@ -13,28 +13,14 @@ import (
 func MarshallServiceRequest(context *gin.Context) {
 	operationTypes := context.Keys["operation_types"].([]models.OperationType)
 	transactions := context.Keys["transactions"].([]commonModels.Transaction)
-	// claim := context.Keys["claims"].(*commonModels.Claim)
-	// var shouldContinue bool
 
 	serviceRequestList := []models.ServiceRequest{}
 	for _, transaction := range transactions {
-		// if transaction.Reference != "service-request" || claim.Username != transaction.Username {
 		if transaction.Reference != "service-request" {
 			continue
 		}
 
-		// for _, detail := range transaction.Details {
-		// 	detailMetadata := detail.Metadata.(map[string]interface{})
-		// 	if detailMetadata["Phone"] == claim.Phone {
-		// 		shouldContinue = true
-		// 	}
-		// }
-
-		// if shouldContinue {
-		// 	shouldContinue = false
-		// 	continue
-		// }
-
+		var payed, transactionFeePayed bool
 		metadata := transaction.Details[0].Metadata.(map[string]interface{})
 		budget := models.Budget{}
 		location := models.Location{}
@@ -53,6 +39,12 @@ func MarshallServiceRequest(context *gin.Context) {
 			if detail.Status == "chosen-professional" {
 				chatJSONString, _ := json.Marshal(detail.Metadata)
 				json.Unmarshal(chatJSONString, &confirmedUser)
+			}
+			if detail.Status == "service-payment" {
+				payed = true
+			}
+			if detail.Status == "transaction-fee-payment" {
+				transactionFeePayed = true
 			}
 		}
 
@@ -80,15 +72,17 @@ func MarshallServiceRequest(context *gin.Context) {
 		json.Unmarshal(userContactInfoJSONString, &userContactInfo)
 
 		serviceRequest := models.ServiceRequest{
-			ID:              transaction.TraceID,
-			Username:        transaction.Username,
-			Type:            metadata["type"].(string),
-			Title:           metadata["title"].(string),
-			Description:     metadata["description"].(string),
-			UserContactInfo: userContactInfo,
-			Location:        location,
-			OperationType:   operationType,
-			Chats:           chats,
+			ID:                  transaction.TraceID,
+			Username:            transaction.Username,
+			Type:                metadata["type"].(string),
+			Title:               metadata["title"].(string),
+			Description:         metadata["description"].(string),
+			UserContactInfo:     userContactInfo,
+			Location:            location,
+			OperationType:       operationType,
+			Chats:               chats,
+			Payed:               payed,
+			TransactionFeePayed: transactionFeePayed,
 		}
 
 		if budget.Username != "" {

@@ -22,10 +22,22 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 			continue
 		}
 
+		var payed, transactionFeePayed bool
 		budget := models.Budget{}
 		confirmed = false
 
 		for _, detail := range transaction.Details {
+			if detail.Status == "service-payment" {
+				payed = true
+			}
+
+			if detail.Status == "transaction-fee-payment" {
+				transactionFeePayed = true
+			}
+
+			if detail.Metadata == nil {
+				continue
+			}
 			detailMetadata := detail.Metadata.(map[string]interface{})
 			if detail.Status == "chosen-professional" && detailMetadata["Username"] == claim.Username {
 				confirmed = true
@@ -55,14 +67,16 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 		userContactInfo.Confirmed = confirmed
 
 		serviceRequest := models.ServiceRequest{
-			ID:              transaction.TraceID,
-			Username:        transaction.Username,
-			Type:            metadata["type"].(string),
-			Title:           metadata["title"].(string),
-			Description:     metadata["description"].(string),
-			UserContactInfo: userContactInfo,
-			Location:        location,
-			OperationType:   operationType,
+			ID:                  transaction.TraceID,
+			Username:            transaction.Username,
+			Type:                metadata["type"].(string),
+			Title:               metadata["title"].(string),
+			Description:         metadata["description"].(string),
+			UserContactInfo:     userContactInfo,
+			Location:            location,
+			OperationType:       operationType,
+			Payed:               payed,
+			TransactionFeePayed: transactionFeePayed,
 		}
 
 		if budget.Username != "" {
