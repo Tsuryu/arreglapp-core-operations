@@ -17,4 +17,5 @@ type ServiceRequest struct {
 	Budget              *Budget            `json:"budget,omitempty"`
 	Payed               bool               `json:"payed"`
 	TransactionFeePayed bool               `json:"transaction_fee_payed"`
+	Canceled            bool               `json:"canceled"`
 }

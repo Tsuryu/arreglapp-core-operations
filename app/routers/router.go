@@ -25,6 +25,8 @@ func Router() {
 	router.POST("service-request/budget", middlewareutils.GetMiddlewares("postBudget")...)
 	router.POST("/service-request/pay", middlewareutils.GetMiddlewares("payServiceRequest")...)
 	router.POST("/service-request/pay-transaction-fee", middlewareutils.GetMiddlewares("payTransactionFee")...)
+	router.DELETE("/service-request/:id", middlewareutils.GetMiddlewares("cancelServiceRequest")...)
+	router.GET("/service-request/professional/history", middlewareutils.GetMiddlewares("professionalHistoryServiceRequest")...)
 
 	router.POST("/support-request", middlewareutils.GetMiddlewares("supportRequest")...)
 

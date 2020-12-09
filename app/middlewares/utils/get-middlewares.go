@@ -30,6 +30,7 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 		middlewares.SearchServiceRequest,
 		middlewares.FilterMyServiceRequest,
 		middlewares.FilterOngoingServiceRequest,
+		middlewares.FilterCanceledRequets,
 		middlewares.MarshallServiceRequest,
 		middlewares.ResponseOK,
 	},
@@ -45,6 +46,7 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 		middlewares.SearchServiceRequest,
 		middlewares.FilterMyServiceRequest,
 		middlewares.FilterNewRequests,
+		middlewares.FilterCanceledRequets,
 		middlewares.MarshallProfessionalServiceRequest,
 		middlewares.ResponseOK,
 	},
@@ -77,6 +79,17 @@ var middlewarelist = map[string][]gin.HandlerFunc{
 	},
 	"supportRequest": {
 		middlewares.PostSupportRequest,
+	},
+	"cancelServiceRequest": {
+		middlewares.CancelServiceRequest,
+	},
+	"professionalHistoryServiceRequest": {
+		middlewares.GetIcons,
+		middlewares.SearchServiceRequest,
+		middlewares.FilterMyServiceRequest,
+		middlewares.FilterExceptHistory,
+		middlewares.MarshallProfessionalServiceRequest,
+		middlewares.ResponseOK,
 	},
 }
 

@@ -14,7 +14,7 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 	operationTypes := context.Keys["operation_types"].([]models.OperationType)
 	transactions := context.Keys["transactions"].([]commonModels.Transaction)
 	claim := context.Keys["claims"].(*commonModels.Claim)
-	var confirmed bool
+	var confirmed, canceled bool
 
 	serviceRequestList := []models.ServiceRequest{}
 	for _, transaction := range transactions {
@@ -47,6 +47,9 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 				jsonString, _ := json.Marshal(detailMetadata)
 				json.Unmarshal(jsonString, &budget)
 			}
+			if detail.Status == "canceled" {
+				canceled = true
+			}
 		}
 
 		metadata := transaction.Details[0].Metadata.(map[string]interface{})
@@ -77,6 +80,7 @@ func MarshallProfessionalServiceRequest(context *gin.Context) {
 			OperationType:       operationType,
 			Payed:               payed,
 			TransactionFeePayed: transactionFeePayed,
+			Canceled:            canceled,
 		}
 
 		if budget.Username != "" {

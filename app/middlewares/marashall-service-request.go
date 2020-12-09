@@ -20,7 +20,7 @@ func MarshallServiceRequest(context *gin.Context) {
 			continue
 		}
 
-		var payed, transactionFeePayed bool
+		var payed, transactionFeePayed, canceled bool
 		metadata := transaction.Details[0].Metadata.(map[string]interface{})
 		budget := models.Budget{}
 		location := models.Location{}
@@ -45,6 +45,9 @@ func MarshallServiceRequest(context *gin.Context) {
 			}
 			if detail.Status == "transaction-fee-payment" {
 				transactionFeePayed = true
+			}
+			if detail.Status == "canceled" {
+				canceled = true
 			}
 		}
 
@@ -83,6 +86,7 @@ func MarshallServiceRequest(context *gin.Context) {
 			Chats:               chats,
 			Payed:               payed,
 			TransactionFeePayed: transactionFeePayed,
+			Canceled:            canceled,
 		}
 
 		if budget.Username != "" {
