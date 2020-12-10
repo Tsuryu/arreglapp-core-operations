@@ -1,0 +1,578 @@
+{
+	"info": {
+		"_postman_id": "faf5316f-3d09-402f-ad73-c86ce4eb4262",
+		"name": "arreglapp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RESET PASSWORD",
+			"item": [
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"vahnxp@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-profile/1/reset-password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-profile",
+								"1",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONFIRM OTP",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "security-code",
+								"value": "133274",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"confirm\",\n    \"metadata\": {\n        \"message\": \"confirm otp to reset password\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/transaction/0D1419832AFDD71F245B66800A8AC895/detail",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"transaction",
+								"0D1419832AFDD71F245B66800A8AC895",
+								"detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PASSWORD",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "trace-id",
+								"value": "0D1419832AFDD71F245B66800A8AC895",
+								"type": "text"
+							},
+							{
+								"key": "security-code",
+								"value": "133274",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"updatedPassword\",\n    \"email\": \"vahnxp@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user-profile/1/password",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user-profile",
+								"1",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "core-operations",
+			"item": [
+				{
+					"name": "OPERATION TYPE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhaG54cEBnbWFpbC5jb20iLCJleHAiOjE2MDMzMTUwNjMsImZpcnN0X25hbWUiOiJoaGpqIiwibGFzdF9uYW1lIjoiaGhoIiwidXNlcm5hbWUiOiJ0ZXN0In0.kOVi7NAK2N-4mt86pLP7VnDA314OFqqZTjtDTezkxKs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Computadoras\",\r\n    \"description\": \"Soporte tecnico y reparacion de computadoras hogareñas, reempleazo de nuevos componentes, recupero de datos, instalacion de Sistema Operativo y office\",\r\n    \"icon_code\": 58998,\r\n    \"icon_family\": \"MaterialIcons\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/operation-type",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"operation-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OPERATION TYPE",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhaG54cEBnbWFpbC5jb20iLCJleHAiOjE2MDMyMjE1ODIsImZpcnN0X25hbWUiOiJoaGpqIiwibGFzdF9uYW1lIjoiaGhoIiwidXNlcm5hbWUiOiJ0ZXN0In0.G9HQmlwGnl92NpkbRW6eT3BiHE1RC5bACdTQuASFPuA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/operation-type",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"operation-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SERVICE REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhaG54cEBnbWFpbC5jb20iLCJleHAiOjE2MDMyMjE1ODIsImZpcnN0X25hbWUiOiJoaGpqIiwibGFzdF9uYW1lIjoiaGhoIiwidXNlcm5hbWUiOiJ0ZXN0In0.G9HQmlwGnl92NpkbRW6eT3BiHE1RC5bACdTQuASFPuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"username\":\"test\",\r\n   \"type\":\"D6E5\",\r\n   \"title\":\"necesito ayuda\",\r\n   \"description\":\"algo se rompio\",\r\n   \"location\":{\r\n      \"longitud\":123123.123,\r\n      \"latitud\":123123.54124\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/service-request",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"service-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SERVICE REQUEST",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhaG54cEBnbWFpbC5jb20iLCJleHAiOjE2MDM3MzU3NjIsImZpcnN0X25hbWUiOiJzZXJnaW8iLCJsYXN0X25hbWUiOiJ2ZWxhenF1ZXoiLCJ1c2VybmFtZSI6InRlc3QifQ.B_6anhx_ksm8y7sO5CuCVZG_FITfPAoQM5Ka2WWJmRI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/service-request/list?username=test",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"service-request",
+								"list"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SERVICE REQUEST SEARCH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/service-request/search",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"service-request",
+								"search"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Creat user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test\",\n    \"password\": \"test\",\n    \"first_name\": \"sergio\",\n    \"last_name\": \"velazquez\",\n    \"email\": \"vahnxp2@gmail.com\",\n    \"phone\": \"123123123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/user-profile",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user-profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test\",\n    \"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/session/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"session",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "activation-code",
+						"value": "729906",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/user-profile/test/activate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user-profile",
+						"test",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/health",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TRANSACTION",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reference\": \"test\",\n    \"details\": [{\n        \"status\": \"created\",\n        \"metadata\": {\n            \"nombre\": \"sergio\"\n        }\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/transaction",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TRANSACTION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/transaction/3F6F19AE52036F81B3B55D12164F2FFA",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction",
+						"3F6F19AE52036F81B3B55D12164F2FFA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TRANSACTIONS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/transaction?reference=service-request",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "test",
+							"disabled": true
+						},
+						{
+							"key": "reference",
+							"value": "service-request"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TRANSACTION - CODE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "with-security-code",
+						"value": "true",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reference\": \"test 2\",\n    \"details\": [{\n        \"status\": \"created\",\n        \"metadata\": {\n            \"nombre\": \"sergio\"\n        }\n    }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/transaction",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DETAIL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"updated\",\n    \"metadata\": {\n        \"apellido\": \"velazquez\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/transaction/F2A65EFCEA512871189362825BF98B33/detail",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction",
+						"F2A65EFCEA512871189362825BF98B33",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DETAIL - CODE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "security-code",
+						"value": "984998",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"updated\",\n    \"metadata\": {\n        \"apellido\": \"velazquez\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/transaction/B540A1E695193960D0E597DF23673553/detail",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction",
+						"B540A1E695193960D0E597DF23673553",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DETAIL WITH CODE AND CLOSE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "security-code",
+						"type": "text",
+						"value": "984998"
+					},
+					{
+						"key": "last-update",
+						"value": "true",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"updated\",\n    \"metadata\": {\n        \"dni\": 12312332\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/transaction/B540A1E695193960D0E597DF23673553/detail",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"transaction",
+						"B540A1E695193960D0E597DF23673553",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
